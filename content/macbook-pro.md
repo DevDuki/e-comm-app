@@ -1,4 +1,5 @@
 ---
+id: 3
 name: Macbook Pro
 description: A Computer
 price: 4000
