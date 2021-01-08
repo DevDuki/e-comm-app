@@ -14,7 +14,7 @@ const Container = styled.div`
 
 const Page = styled.div`
   width: 100%;
-  max-width: 90%;
+  max-width: 780px;
   margin: 0 auto;
 `
 

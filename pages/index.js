@@ -19,7 +19,7 @@ const Container = styled.div`
 
 const ProductsContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 0.5rem;
   margin: 0.5rem 0;
 `

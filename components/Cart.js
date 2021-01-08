@@ -10,7 +10,7 @@ const Container = styled.div`
   right: 0;
   height: 100vh;
   background-color: white;
-  width: 300px;
+  width: 350px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   transform: translateX(${props => props.isOpen ? '0%' : '100%'});
   transition: transform 0.2s ease-in;
@@ -23,7 +23,8 @@ const XContainer = styled.div`
 
 const X = styled(FiX)`
   font-size: 2.5rem;
-  margin: 0.5rem;
+  margin: 1rem;
+  margin-bottom: 0;
 
   &:hover {
     cursor: pointer;
@@ -31,13 +32,14 @@ const X = styled(FiX)`
 `
 
 const Content = styled.div`
-  padding: 1rem 2rem;
+  padding: 0rem 2rem;
 `
 
 const Title = styled.h2`
   font-weight: 400;
   font-size: 2rem;
   border-bottom: 1px solid #9f9f9f;
+  margin-top: 1rem;
 `
 
 const Item = styled.li`
