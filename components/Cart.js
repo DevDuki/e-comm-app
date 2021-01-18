@@ -4,6 +4,7 @@ import useCart from '../hooks/useCart'
 import { useRouter } from 'next/router'
 
 const Container = styled.div`
+  z-index: 2;
   position: fixed;
   top: 0;
   bottom: 0;
