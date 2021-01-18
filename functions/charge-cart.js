@@ -20,6 +20,8 @@ const getProducts = () => {
 exports.handler = async (event, context) => {
   const { cart } = JSON.parse(event.body)
 
+  process.env.STRIPE_PUBLIC_KEY
+
   const products = getProducts()
 
   const cartWithProducts = cart.map(({ id, qty }) => {
