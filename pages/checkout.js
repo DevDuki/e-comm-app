@@ -3,6 +3,7 @@ import useCart from '../hooks/useCart'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
 import axios from 'axios'
+import { loadStripe } from '@stripe/stripe-js'
 
 const Item = styled.li`
   list-style: none;
@@ -49,8 +50,9 @@ const Checkout = () => {
       qty
     }))
 
+    const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY)
     const { data } = await axios.post(url, { cart: newCart })
-    console.log('paying now')
+    await stripe.redirectToCheckout({ sessionId: data.id })
   }
 
   return (

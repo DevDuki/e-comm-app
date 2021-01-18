@@ -1,5 +1,6 @@
 const fs = require('fs')
 const matter = require('gray-matter')
+const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 
 const getProducts = () => {
   const directory = `${process.cwd()}/content` // process.cwd() returns the directory depending on which environment we are in (for example form localhost if in dev or from netlify if in prod)
@@ -20,8 +21,6 @@ const getProducts = () => {
 exports.handler = async (event, context) => {
   const { cart } = JSON.parse(event.body)
 
-  process.env.STRIPE_PUBLIC_KEY
-
   const products = getProducts()
 
   const cartWithProducts = cart.map(({ id, qty }) => {
@@ -34,9 +33,30 @@ exports.handler = async (event, context) => {
   console.log('cwp', cartWithProducts)
 
   // talking to Stripe
+  const lineItems = cartWithProducts.map((product) => ({
+    price_data: {
+      currency: "eur",
+      product_data: {
+        name: product.name
+      },
+      unit_amount: product.price
+    },
+    quantity: product.qty
+  }))
+
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ['card'],
+    line_items: lineItems,
+    mode: 'payment',
+    success_url: `${process.env.URL}/success`,
+    cancel_url: `${process.env.URL}/cancelled`
+  })
+
   // charging the card
   return {
     statusCode: 200,
-    body: "I have charged that card!"
+    body: JSON.stringify({
+      id: session.id
+    })
   }
 }
