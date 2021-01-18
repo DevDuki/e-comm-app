@@ -7,6 +7,12 @@ import useCart from '../hooks/useCart'
 const Nav = styled.nav`
   background: white;
   padding: 2rem;
+
+  @media screen and (max-width: 820px){
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
 `
 
 const NavContainer = styled.div`

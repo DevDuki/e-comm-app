@@ -22,6 +22,13 @@ const ProductsContainer = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-gap: 0.5rem;
   margin: 0.5rem 0;
+
+  @media screen and (max-width: 820px){
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 0.5rem;
+    margin: 1rem 1rem;
+  }
 `
 
 const Price = styled.p`
@@ -29,6 +36,26 @@ const Price = styled.p`
   bottom: 0;
   right: 1rem;
   font-size: 2rem;
+`
+
+const AddToCartButton = styled.button`
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  background: linear-gradient(to right, #43c6ac, #191654);
+  color: white;
+  border: none;
+  padding: 1rem;
+  transition: all 0.2s;
+
+  &:active{
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, 
+                rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+  }
+
+  &:hover{
+    transform: scale(1.1);
+  }
 `
 
 const renderProduct = (product, addItem) => {
@@ -43,7 +70,7 @@ const renderProduct = (product, addItem) => {
         <Container>
           <h1>{product.name}</h1>
           <p>{product.description}</p>
-          <button onClick={handleClick}>Add to cart</button>
+          <AddToCartButton onClick={handleClick}>Add to cart</AddToCartButton>
           <Price>{product.price/100}€</Price>
         </Container>
       </UnstyledLink>
