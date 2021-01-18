@@ -53,7 +53,6 @@ const renderProduct = (product, addItem) => {
 
 const HomePage = (props) => {
   const { cart, addItem } = useCart()
-  console.log('cart', cart)
   return (
     <ProductsContainer>
       {props.products.map((product) => renderProduct(product, addItem))}
