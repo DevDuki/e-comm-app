@@ -1,4 +1,7 @@
 # e-comm-app
 A little e-commerce app built with react, next and stripe. 
 
-Fur self educational purposes only.
+For self educational purposes only.
+
+##Link
+https://my-first-ecomm-app.netlify.app/
